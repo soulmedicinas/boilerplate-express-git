@@ -2,6 +2,12 @@ let express = require('express');
 let app = express();
 require('dotenv').config();
 
+app.use(function middleware(req, res, next) {
+    let string = `${req.method} ${req.path} - ${req.ip}`;
+    console.log(string);
+    next();
+});
+
 console.log("Hello World");
 
 //app.get('/', function(req, res) {
