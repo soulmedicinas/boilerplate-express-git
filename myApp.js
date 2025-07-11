@@ -41,6 +41,18 @@ app.get('/:word/echo', function(req, res) {
   next();
 });
 
+function nameHandler(req, res) {
+  // For GET requests, use query parameters
+  // For POST requests, use body parameters
+  const firstname = req.query.first;
+  const lastname = req.query.last;
+  res.json({ name: "`${firstname} ${lastname}`"});
+
+app.route('/name')
+    .get(nameHandler)
+    .post(nameHandler);
+};
+
 //app.route('/name', function(req, res).get(handler).post(handler) {
   //res.json({ name: '`${firstname} ${lastname}`'})
   
